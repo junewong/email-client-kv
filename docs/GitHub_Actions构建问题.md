@@ -74,6 +74,26 @@ autoreconf: error: /usr/bin/autoconf failed with exit status: 1
       libtinfo5 cmake libffi-dev libssl-dev
 ```
 
+### 6. libtinfo5包不存在（Ubuntu 24）
+**问题**:
+```
+E: Unable to locate package libtinfo5
+```
+
+**原因**: Ubuntu 24已移除libtinfo5包
+
+**解决**: 从依赖列表中移除libtinfo5
+```yaml
+- name: Install dependencies
+  run: |
+    sudo apt-get update
+    sudo apt-get install -y git zip unzip openjdk-17-jdk wget \
+      autoconf automake libtool pkg-config \
+      zlib1g-dev libncurses5-dev libncursesw5-dev \
+      cmake libffi-dev libssl-dev
+    # 注意：移除了 libtinfo5
+```
+
 ## 最终可用配置
 
 ```yaml
@@ -103,7 +123,7 @@ jobs:
         sudo apt-get install -y git zip unzip openjdk-17-jdk wget \
           autoconf automake libtool pkg-config \
           zlib1g-dev libncurses5-dev libncursesw5-dev \
-          libtinfo5 cmake libffi-dev libssl-dev
+          cmake libffi-dev libssl-dev
     
     - name: Install Buildozer
       run: pip install buildozer cython
