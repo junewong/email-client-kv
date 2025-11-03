@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+*.egg-info/
+
+# Kivy
+*.pyc
+.buildozer/
+bin/
+.gradle/
+
+# 账户配置（重要：不要提交密码）
+accounts.json
+.mailclient/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# macOS
+.DS_Store
