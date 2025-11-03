@@ -19,3 +19,5 @@ android.minapi = 21
 android.ndk = 25b
 android.accept_sdk_license = True
 android.arch = arm64-v8a
+android.skip_update = False
+android.sdk_path = ~/.buildozer/android/platform/android-sdk
