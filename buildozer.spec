@@ -1,12 +1,12 @@
 [app]
-title = 邮件客户端
-package.name = mailclient
-package.domain = com.example
+title = Kivy Build Test
+package.name = kivytest
+package.domain = com.test
 source.dir = .
-source.include_exts = py,png,jpg,kv,atlas,json
+source.include_exts = py
 version = 0.1
-requirements = python3,kivy==2.3.0
-permissions = INTERNET
+requirements = python3,kivy
+permissions = 
 orientation = portrait
 fullscreen = 0
 
