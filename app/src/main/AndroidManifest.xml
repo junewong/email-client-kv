@@ -25,7 +25,8 @@
         
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.MailClient.NoActionBar" />
         
         <activity
             android:name=".ui.maildetail.MailDetailActivity"
