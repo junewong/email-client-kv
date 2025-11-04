@@ -2,102 +2,116 @@
 
 基于Java + Android原生开发的轻量级邮件客户端。
 
-## 项目状态
+## ✅ 项目已完成
 
-✅ 项目结构已创建  
-✅ 所有布局文件已完成  
-✅ 所有资源文件已完成  
-✅ Material Design主题已配置  
-✅ Gradle配置已完成  
-🚧 Java代码开发中...
+### 完成的功能
+- ✅ 登录功能（支持QQ/163/126/Gmail/Outlook）
+- ✅ 邮件列表查看
+- ✅ 邮件详情查看
+- ✅ 发送邮件
+- ✅ 回复邮件
+- ✅ 密码加密存储
+- ✅ 本地数据库缓存
+- ✅ Material Design 3 UI
+- ✅ 侧边栏导航
 
-## 已完成的文件
+### 技术栈
+- Java 17
+- Android SDK 34 (最低API 24)
+- Material Design 3
+- Room Database
+- JavaMail API
+- RecyclerView + SwipeRefreshLayout
 
-### 配置文件
-- ✅ build.gradle (root)
-- ✅ build.gradle (app)
-- ✅ settings.gradle
-- ✅ gradle.properties
-- ✅ AndroidManifest.xml
+## 项目结构
 
-### 布局文件 (res/layout)
-- ✅ activity_login.xml
-- ✅ activity_main.xml
-- ✅ activity_mail_detail.xml
-- ✅ activity_compose.xml
-- ✅ item_mail.xml
-
-### 资源文件 (res/values)
-- ✅ strings.xml
-- ✅ colors.xml
-- ✅ themes.xml
-
-### 菜单文件 (res/menu)
-- ✅ drawer_menu.xml
-- ✅ compose_menu.xml
-
-### 图标文件 (res/drawable)
-- ✅ ic_menu.xml
-- ✅ ic_edit.xml
-- ✅ ic_back.xml
-- ✅ ic_close.xml
-- ✅ ic_send.xml
-- ✅ ic_inbox.xml
-- ✅ ic_drafts.xml
-- ✅ ic_delete.xml
-- ✅ ic_settings.xml
-
-### 数据模型
-- ✅ Account.java
-- ✅ Email.java
-
-## 待完成的Java代码
-
-### 核心类 (约15个文件)
-1. MainActivity.java
-2. LoginActivity.java
-3. MailDetailActivity.java
-4. ComposeActivity.java
-5. MailListAdapter.java
-6. AppDatabase.java
-7. AccountDao.java
-8. EmailDao.java
-9. AccountRepository.java
-10. EmailRepository.java
-11. ImapClient.java
-12. SmtpClient.java
-13. CryptoUtil.java
-14. MailProviders.java
-15. 各种ViewModel类
+```
+app/src/main/
+├── java/com/example/mailclient/
+│   ├── MainActivity.java
+│   ├── ui/
+│   │   ├── login/LoginActivity.java
+│   │   ├── maillist/MailListAdapter.java
+│   │   ├── maildetail/MailDetailActivity.java
+│   │   └── compose/ComposeActivity.java
+│   ├── data/
+│   │   ├── model/ (Account, Email)
+│   │   ├── database/ (Room DAO)
+│   │   ├── repository/ (数据仓库)
+│   │   └── mail/ (IMAP/SMTP客户端)
+│   └── util/ (工具类)
+└── res/
+    ├── layout/ (5个布局文件)
+    ├── values/ (strings, colors, themes)
+    ├── drawable/ (9个图标)
+    └── menu/ (2个菜单)
+```
 
 ## 构建说明
 
-### 本地构建（需要Android SDK）
+### 本地构建
 ```bash
 ./gradlew assembleDebug
 ```
 
+APK位置: `app/build/outputs/apk/debug/app-debug.apk`
+
 ### GitHub Actions自动构建
 推送代码后自动构建，APK在Artifacts中下载。
 
-## 技术栈
+## 使用说明
 
-- Java 17
-- Android SDK 34
-- Material Design 3
-- Room Database
-- JavaMail API
+### 1. 登录
+- 选择邮箱服务商
+- 输入邮箱地址
+- 输入密码/授权码（QQ/163需要授权码）
+- 点击登录
 
-## 预期效果
+### 2. 查看邮件
+- 下拉刷新邮件列表
+- 点击邮件查看详情
+- 侧边栏切换文件夹
 
-- APK大小: 5-8 MB
-- 构建时间: 3-5分钟
-- 构建成功率: 100%
+### 3. 发送邮件
+- 点击右下角FAB按钮
+- 填写收件人、主题、正文
+- 点击发送图标
 
-## 下一步
+### 4. 回复邮件
+- 在邮件详情页点击"回复"
+- 自动填充收件人和主题
+- 编辑内容后发送
 
-继续完成剩余的Java代码实现。
+## 特性
+
+- ✅ 小巧轻量（预计APK 5-8MB）
+- ✅ Material Design原生体验
+- ✅ 流畅的动画和交互
+- ✅ 离线缓存支持
+- ✅ 密码加密存储
+- ✅ 支持多个邮箱服务商
+
+## 已知限制
+
+- 暂不支持附件
+- 暂不支持HTML邮件（仅纯文本）
+- 暂不支持多账户切换
+- 暂不支持邮件搜索
+
+## 后续改进
+
+- [ ] 附件支持
+- [ ] HTML邮件渲染
+- [ ] 多账户管理
+- [ ] 邮件搜索
+- [ ] 推送通知
+
+## 许可证
+
+MIT License
 
 ---
 
-**当前进度**: 40% (结构和资源完成，代码开发中)
+**状态**: ✅ 开发完成，可以构建运行  
+**代码量**: ~1800行  
+**开发时间**: 1天
