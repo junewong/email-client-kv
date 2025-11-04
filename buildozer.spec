@@ -5,7 +5,7 @@ package.domain = com.example
 source.dir = .
 source.include_exts = py,png,jpg,kv,atlas,json
 version = 0.1
-requirements = python3,kivy==2.3.0,pycryptodome
+requirements = python3,kivy==2.3.0
 permissions = INTERNET
 orientation = portrait
 fullscreen = 0
