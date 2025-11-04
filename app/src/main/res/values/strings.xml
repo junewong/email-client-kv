@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">邮件客户端</string>
+    
+    <!-- Login -->
+    <string name="login_title">登录邮箱</string>
+    <string name="email_hint">邮箱地址</string>
+    <string name="password_hint">密码/授权码</string>
+    <string name="login_button">登录</string>
+    <string name="provider_hint">选择邮箱服务商</string>
+    <string name="advanced_settings">高级设置</string>
+    
+    <!-- Mail List -->
+    <string name="inbox">收件箱</string>
+    <string name="sent">已发送</string>
+    <string name="drafts">草稿箱</string>
+    <string name="trash">垃圾箱</string>
+    <string name="starred">已加星标</string>
+    <string name="refresh">刷新</string>
+    <string name="compose">撰写</string>
+    
+    <!-- Mail Detail -->
+    <string name="from">发件人</string>
+    <string name="to">收件人</string>
+    <string name="subject">主题</string>
+    <string name="date">时间</string>
+    <string name="reply">回复</string>
+    <string name="forward">转发</string>
+    <string name="delete">删除</string>
+    <string name="attachment">附件</string>
+    
+    <!-- Compose -->
+    <string name="compose_title">撰写邮件</string>
+    <string name="to_hint">收件人</string>
+    <string name="cc_hint">抄送</string>
+    <string name="subject_hint">主题</string>
+    <string name="body_hint">正文</string>
+    <string name="send">发送</string>
+    <string name="add_attachment">添加附件</string>
+    
+    <!-- Common -->
+    <string name="loading">加载中...</string>
+    <string name="error">错误</string>
+    <string name="success">成功</string>
+    <string name="cancel">取消</string>
+    <string name="ok">确定</string>
+    <string name="settings">设置</string>
+</resources>
