@@ -31,12 +31,14 @@
         <activity
             android:name=".ui.maildetail.MailDetailActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.MailClient.NoActionBar" />
         
         <activity
             android:name=".ui.compose.ComposeActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.MailClient.NoActionBar"
             android:windowSoftInputMode="adjustResize" />
     </application>
 </manifest>
