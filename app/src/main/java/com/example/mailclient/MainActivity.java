@@ -91,7 +91,10 @@ public class MainActivity extends AppCompatActivity {
         
         accountRepository.getDefaultAccount(account -> {
             if (account == null) {
-                runOnUiThread(() -> swipeRefresh.setRefreshing(false));
+                runOnUiThread(() -> {
+                    swipeRefresh.setRefreshing(false);
+                    Toast.makeText(this, "未找到账户", Toast.LENGTH_SHORT).show();
+                });
                 return;
             }
             
@@ -113,11 +116,16 @@ public class MainActivity extends AppCompatActivity {
                         runOnUiThread(() -> {
                             adapter.setEmails(emails);
                             swipeRefresh.setRefreshing(false);
+                            Toast.makeText(this, "加载了 " + emails.size() + " 封邮件", Toast.LENGTH_SHORT).show();
                         });
                     });
                     
                 } catch (Exception e) {
-                    runOnUiThread(() -> swipeRefresh.setRefreshing(false));
+                    e.printStackTrace();
+                    runOnUiThread(() -> {
+                        swipeRefresh.setRefreshing(false);
+                        Toast.makeText(this, "加载失败: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                    });
                 }
             });
         });
