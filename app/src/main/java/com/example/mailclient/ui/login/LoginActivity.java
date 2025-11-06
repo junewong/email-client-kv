@@ -81,21 +81,24 @@ public class LoginActivity extends AppCompatActivity {
                 client.connect(provider.imapHost, provider.imapPort, email, password);
                 client.disconnect();
                 
-                Account account = new Account();
-                account.setEmail(email);
-                account.setName(email.split("@")[0]);
-                account.setImapServer(provider.imapHost);
-                account.setImapPort(provider.imapPort);
-                account.setSmtpServer(provider.smtpHost);
-                account.setSmtpPort(provider.smtpPort);
-                account.setEncryptedPassword(CryptoUtil.encrypt(password));
-                account.setUseSsl(true);
-                account.setDefault(true);
-                
-                accountRepository.addAccount(account, id -> {
-                    runOnUiThread(() -> {
-                        startActivity(new Intent(this, MainActivity.class));
-                        finish();
+                // 先删除所有旧账户
+                accountRepository.deleteAllAccounts(() -> {
+                    Account account = new Account();
+                    account.setEmail(email);
+                    account.setName(email.split("@")[0]);
+                    account.setImapServer(provider.imapHost);
+                    account.setImapPort(provider.imapPort);
+                    account.setSmtpServer(provider.smtpHost);
+                    account.setSmtpPort(provider.smtpPort);
+                    account.setEncryptedPassword(CryptoUtil.encrypt(password));
+                    account.setUseSsl(true);
+                    account.setDefault(true);
+                    
+                    accountRepository.addAccount(account, id -> {
+                        runOnUiThread(() -> {
+                            startActivity(new Intent(this, MainActivity.class));
+                            finish();
+                        });
                     });
                 });
                 

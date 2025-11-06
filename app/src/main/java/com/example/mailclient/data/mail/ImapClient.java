@@ -28,6 +28,9 @@ public class ImapClient {
         props.put("mail.imaps.ssl.trust", "*");
         props.put("mail.imaps.timeout", "10000");
         props.put("mail.imaps.connectiontimeout", "10000");
+        props.put("mail.imaps.auth.login.disable", "false");
+        props.put("mail.imaps.auth.plain.disable", "false");
+        props.put("mail.debug", "false");
         
         Session session = Session.getInstance(props);
         store = session.getStore("imaps");

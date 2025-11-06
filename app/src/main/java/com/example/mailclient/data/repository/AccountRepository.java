@@ -38,6 +38,13 @@ public class AccountRepository {
         });
     }
     
+    public void deleteAllAccounts(Runnable onComplete) {
+        executor.execute(() -> {
+            database.accountDao().deleteAll();
+            if (onComplete != null) onComplete.run();
+        });
+    }
+    
     public interface Callback<T> {
         void onResult(T result);
     }
