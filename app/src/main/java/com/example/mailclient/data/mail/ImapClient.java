@@ -37,7 +37,7 @@ public class ImapClient {
     
     public List<Email> fetchEmails(String folderName, int limit) throws Exception {
         Folder folder = store.getFolder(folderName);
-        folder.open(Folder.READ_ONLY);
+        folder.open(Folder.READ_WRITE);
         
         Message[] messages = folder.getMessages();
         List<Email> emails = new ArrayList<>();
@@ -61,7 +61,7 @@ public class ImapClient {
     
     public String getEmailBody(String folderName, String uid) throws Exception {
         Folder folder = store.getFolder(folderName);
-        folder.open(Folder.READ_ONLY);
+        folder.open(Folder.READ_WRITE);
         
         Message msg = folder.getMessage(Integer.parseInt(uid));
         String body = "";
