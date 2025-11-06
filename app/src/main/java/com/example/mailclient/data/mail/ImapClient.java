@@ -1,5 +1,7 @@
 package com.example.mailclient.data.mail;
 
+import android.util.Log;
+
 import com.example.mailclient.data.model.Email;
 
 import java.util.ArrayList;
@@ -13,9 +15,11 @@ import javax.mail.Store;
 import javax.mail.internet.InternetAddress;
 
 public class ImapClient {
+    private static final String TAG = "ImapClient";
     private Store store;
     
     public void connect(String host, int port, String email, String password) throws Exception {
+        Log.d(TAG, "连接到: " + host + ":" + port + " 用户: " + email);
         Properties props = new Properties();
         props.put("mail.store.protocol", "imaps");
         props.put("mail.imaps.host", host);
@@ -24,6 +28,7 @@ public class ImapClient {
         Session session = Session.getInstance(props);
         store = session.getStore("imaps");
         store.connect(host, email, password);
+        Log.d(TAG, "连接成功");
     }
     
     public List<Email> fetchEmails(String folderName, int limit) throws Exception {
