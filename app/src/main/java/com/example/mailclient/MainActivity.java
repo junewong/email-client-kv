@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private EmailRepository emailRepository;
     private final Executor executor = Executors.newSingleThreadExecutor();
     private String currentFolder = "INBOX";
+    private boolean isLoading = false;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,12 +105,18 @@ public class MainActivity extends AppCompatActivity {
     }
     
     private void loadEmails() {
+        if (isLoading) {
+            return;
+        }
+        
+        isLoading = true;
         swipeRefresh.setRefreshing(true);
         
         accountRepository.getDefaultAccount(account -> {
             if (account == null) {
                 runOnUiThread(() -> {
                     swipeRefresh.setRefreshing(false);
+                    isLoading = false;
                     Toast.makeText(this, "未找到账户", Toast.LENGTH_SHORT).show();
                 });
                 return;
@@ -133,6 +140,7 @@ public class MainActivity extends AppCompatActivity {
                         runOnUiThread(() -> {
                             adapter.setEmails(emails);
                             swipeRefresh.setRefreshing(false);
+                            isLoading = false;
                             Toast.makeText(this, "加载了 " + emails.size() + " 封邮件", Toast.LENGTH_SHORT).show();
                         });
                     });
@@ -141,6 +149,7 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                     runOnUiThread(() -> {
                         swipeRefresh.setRefreshing(false);
+                        isLoading = false;
                         Toast.makeText(this, "加载失败: " + e.getMessage(), Toast.LENGTH_LONG).show();
                     });
                 }
