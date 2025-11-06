@@ -80,11 +80,27 @@ public class MainActivity extends AppCompatActivity {
                 getSupportActionBar().setTitle(item.getTitle());
             }
             drawerLayout.close();
+            loadEmailsFromDatabase();
             loadEmails();
             return true;
         });
         
+        loadEmailsFromDatabase();
         loadEmails();
+    }
+    
+    private void loadEmailsFromDatabase() {
+        accountRepository.getDefaultAccount(account -> {
+            if (account != null) {
+                emailRepository.getEmails(account.getId(), currentFolder, 50, emails -> {
+                    runOnUiThread(() -> {
+                        if (emails != null && !emails.isEmpty()) {
+                            adapter.setEmails(emails);
+                        }
+                    });
+                });
+            }
+        });
     }
     
     private void loadEmails() {
@@ -106,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
                     client.connect(account.getImapServer(), account.getImapPort(),
                         account.getEmail(), password);
                     
-                    List<Email> emails = client.fetchEmails(currentFolder, 20);
+                    List<Email> emails = client.fetchEmails(currentFolder, 50);
                     for (Email email : emails) {
                         email.setAccountId(account.getId());
                     }

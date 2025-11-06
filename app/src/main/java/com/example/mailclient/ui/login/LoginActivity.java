@@ -33,9 +33,18 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
         
         accountRepository = new AccountRepository(this);
+        
+        // 检查是否已有账户
+        accountRepository.getDefaultAccount(account -> {
+            if (account != null) {
+                startActivity(new Intent(this, MainActivity.class));
+                finish();
+            }
+        });
+        
+        setContentView(R.layout.activity_login);
         
         providerSpinner = findViewById(R.id.providerSpinner);
         emailInput = findViewById(R.id.emailInput);
