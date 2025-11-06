@@ -82,12 +82,10 @@ public class MainActivity extends AppCompatActivity {
             }
             drawerLayout.close();
             loadEmailsFromDatabase();
-            loadEmails();
             return true;
         });
         
         loadEmailsFromDatabase();
-        loadEmails();
     }
     
     private void loadEmailsFromDatabase() {
